@@ -1,9 +1,10 @@
 import  React, {useEffect,useState  } from 'react';
 import { useCreateEmployeeMutation, useGetEmployeeByIdQuery, useUpdateEmployeeMutation } from './services/employee_service';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Button from './components/Button';
 
 
-const EmployeeForm = () => {
+const EmployeeForm = (onClose) => {
 
   const {id}=useParams();
   const [formState, setForm] = useState({
@@ -14,7 +15,7 @@ const EmployeeForm = () => {
     password:"",
     date:""
   });
-
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [date,setDate]=useState("");
@@ -57,9 +58,10 @@ const handleSubmit = (e) =>{
   createEmployee({params})
   }
 
-
+  
   e.preventDefault();
   console.log("You clicked submit.");
+  
 }
 
 const handleChangeRole = (e) => {
@@ -73,6 +75,7 @@ const handleChangeStatus = (e) => {
 }
 
 return (
+  <section>
     <form name="form1" onSubmit={handleSubmit}>
         {/* {inputFields.map((item)=>(
                 <InputField key={item.key} label={item.label} type={item.type} placeholder={item.placeholder}/>
@@ -91,11 +94,14 @@ return (
             <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" id="empname" placeholder="Employee Name" />
           </div>
 
-          <div>
+          {/* <div>
             <label for="empid">Employee ID</label>
             <input type="text" id="empid" placeholder="Employee ID" />
+          </div> */}
+          <div>
+            <label for="exp">Experience</label>
+            <input value={experience} onChange={(e)=>{setExp(e.target.value)}} type="text" id="exp" placeholder="Experience" />
           </div>
-
           <div>
             <label for="joindate">Joining Date</label>
             <input value={date} onChange={(e)=>{setDate(e.target.value)}} type="text" id="joindate" placeholder="Joining Date" />
@@ -127,13 +133,11 @@ return (
             </select>
           </div>
 
-          <div>
-            <label for="exp">Experience</label>
-            <input value={experience} onChange={(e)=>{setExp(e.target.value)}} type="text" id="exp" placeholder="Experience" />
-          </div>
+          
+
         </div>
 
-        <div class="flex-container" id="lastRow">
+        {/* <div class="flex-container" id="lastRow">
           <div>
             <label for="address">Address</label>
             <input type="text" id="address" placeholder="Address" />
@@ -147,7 +151,11 @@ return (
               Browse
             </button>
           </div>
-        </div>
+        </div> */}
+
+
+
+
 
         {/* <InputSelect 
             label={"Role"}
@@ -180,9 +188,9 @@ return (
         <div>
           {/* <Button label={"Submit"} handleClick={()=>{}}/>
                 
-            < Button label={"Cancel"} handleClick={()=>{}}/>
+          < Button label={"Cancel"} handleClick={()=>{}}/>*/}
 
-            < Button label={"Back"} handleClick={()=>{navigate(-1)}}/> */}
+            {/* < Button label={"Back"} handleClick={()=>{navigate(-1)}}/> */}
           <button
             type="submit"
             id="submit"
@@ -192,11 +200,12 @@ return (
             Submit
           </button>
 
-          <button type="reset" name="cancel">
+          <button className='cancel' type="reset" name="cancel">
             Cancel
           </button>
         </div>
     </form>
+    </section>
 );
 };
 

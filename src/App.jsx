@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './';
 import './App.css';
  import InputField from './components/InputField'
  import Button from './components/Button'

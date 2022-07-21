@@ -14,39 +14,39 @@ const CreateEmployee = () => {
 const {id}=useParams();
 const navigate = useNavigate();
 const [create, setCreate] = useState(false);
-const inputFields = [
-    {
-      key: "empname",
-      label: "Employee Name",
-      type: "text",
-      placeholder: "Employee Name",
-    },
-    {
-      key: "empid",
-      label: "Employee ID",
-      type: "text",
-      placeholder: "Employee ID",
-    },
-    {
-      key: "joindate",
-      label: "JoinDate",
-      type: "text",
-      placeholder: "Join Date",
-    },
-    {
-      key: "experience",
-      label: "Employee Name",
-      type: "text",
-      placeholder: "Experience",
-    },
-    { key: "address", label: "Address", type: "text", placeholder: "Address" },
-    {
-      key: "idproof",
-      label: "ID Proof",
-      type: "text",
-      placeholder: "ID Proof",
-    },
-  ];
+// const inputFields = [
+//     {
+//       key: "empname",
+//       label: "Employee Name",
+//       type: "text",
+//       placeholder: "Employee Name",
+//     },
+//     {
+//       key: "empid",
+//       label: "Employee ID",
+//       type: "text",
+//       placeholder: "Employee ID",
+//     },
+//     {
+//       key: "joindate",
+//       label: "JoinDate",
+//       type: "text",
+//       placeholder: "Join Date",
+//     },
+//     {
+//       key: "experience",
+//       label: "Employee Name",
+//       type: "text",
+//       placeholder: "Experience",
+//     },
+//     { key: "address", label: "Address", type: "text", placeholder: "Address" },
+//     {
+//       key: "idproof",
+//       label: "ID Proof",
+//       type: "text",
+//       placeholder: "ID Proof",
+//     },
+//   ];
 
 
     /* // return(
@@ -158,9 +158,9 @@ return (
           </div>
 
           <aside>
-            <div className="sidenav">
+            <div  className="sidenav">
               <img className="list" src="List.png" alt="employee icon.png" />
-              <a href="#"> Employee list</a>
+              <a href=""> Employee list</a>
             </div>
           </aside>
         </nav>
@@ -170,17 +170,26 @@ return (
         <section>
           {create ?  <h1>{id? 'Edit Employee': 'Create Employee'}</h1>: <h1>Employee List</h1>}
           <Button
-            label="Create/List"
+            className="plus"
+            label="+"
+            handleClick={() => {
+              handleClick();
+            }}
+          />
+          <Button
+         
+            className="create"
+            label="Employee Create/List"
             handleClick={() => {
               handleClick();
             }}
           />
         </section>
-        <section>
+       
           
 
-        {create ? <EmployeeForm /> : <EmployeePage onClose={()=>{console.log("qwer");setCreate(true)}}/> } 
-        </section>
+        {create ? <EmployeeForm  /> : <EmployeePage onClose={()=>{setCreate(true)}}/> } 
+        
       </main>
     </>
 );
