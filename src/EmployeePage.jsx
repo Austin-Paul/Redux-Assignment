@@ -21,37 +21,41 @@ return(
         <>
           {console.log(data[0])}
 
-          <table>
-            <tr>
-              <th>Employee Name</th>
-              <th>Employee ID</th>
-              <th>Joining Date</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Experience</th>
-              <th>Action</th>
-            </tr>
+          <div className='table'>
+            <div className="table-heading">
+            
+              <div className='column-name' >Employee Name</div>
+              <div className='column-id'>Employee ID</div>
+              <div className='column-date'>Joining Date</div>
+              <div className='column-role'>Role</div>
+              <div className='column-status'>Status</div>
+              <div className='column-experience'>Experience</div>
+              <div className='column-action'>Action</div>
+            
+            </div>
           {data.map((item) => {
             return (
               <>
-                
-                  <tr>
-
-                    <td>{item.name}</td>
-                    <td>{item.id}</td>
-                    <td>{item.join_date}</td>
-                    <td>{item.role}</td>
-                    <td>{item.status}</td>
-                    <td>{item.experience}</td>
-                    <td><button onClick={()=>{navigate( `/edit/${item.id}`); onClose()}}>Edit</button></td>
-                    <td><button onClick={()=>{deleteEmployee(item.id)}}>Delete</button></td>
-                    
-                  </tr>
-                
+              <div className='table-body'> 
+                  
+              
+                    <div className='column-name'>{item.name}</div>
+                    <div className='column-id'>{item.id}</div>
+                    <div className='column-date'>{item.join_date}</div>
+                    <div className='column-role'>{item.role}</div>
+                    <div className='column-status'>{item.status}</div>
+                    <div className='column-experience'>{item.experience}</div>
+                    <div className='column-action'>
+                      <button  onClick={()=>{navigate( `/edit/${item.id}`); onClose()}}>Edit</button>
+                      <button   onClick={()=>{deleteEmployee(item.id)}}>Delete</button>
+                    </div>
+                  
+              </div> 
+              
               </>
             );
           })}
-          </table>
+          </div>
          
         </>
       )
